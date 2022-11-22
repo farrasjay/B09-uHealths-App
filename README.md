@@ -23,7 +23,7 @@ Health Status Tracker menghitung dan memperbaharui status kesehatan pengguna sec
 
 ## 🖥️ Integrasi Web Service
 
-uHealths Mobile menggunakan Flutter untuk mengintegrasikan front-end. Sementara itu, untuk back-end, digunakan implementasi REST API pada berkas views.py dan melakukan penyimpanan data pada berkas JSON untuk mendapatkan data yang telah dimasukkan pada forms baik lewat website atau aplikasi sebagai pengintegrasian data dengan *web service* atas situs web yang telah dibuat sebelumnya https://uhealths.herokuapp.com/uhealths/ .
+uHealths Mobile menggunakan Flutter untuk mengintegrasikan front-end aplikasinya. Sementara, back-end dari aplikasi memanfaatkan implementasi REST API pada berkas views.py. Selanjutnya, dilakukan penyimpanan data pada berkas JSON untuk mendapatkan data yang telah dimasukkan pada forms baik lewat situs web atau aplikasi sebagai pengintegrasian data dengan *web service* atas situs web dari uHealts yang dapat diakses pada tautan berikut : [uHealths](https://uhealths.herokuapp.com/uhealths) .
  
 ## ✨Peran User
 
