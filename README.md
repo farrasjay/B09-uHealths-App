@@ -7,7 +7,7 @@
 
  
 ## 💻Tentang Aplikasi 
-Topik yang kami angkat terkait G20 adalah Kesehatan Global, yang berupaya mendidik masyarakat tentang kesehatan global dan dampaknya terhadap dunia. Ide kami berkembang pesat di situs web kesehatan dan kebugaran _online_ yang menawarkan wawasan tentang kesehatan dan kebugaran terkini. Aplikasi kami, bernama uHealths, menyediakan berbagai konten yang dapat membantu pengguna aplikasi kami agar dapat menjalani hidup yang lebih sehat. Selain konten, aplikasi uHealths menyediakan beberapa fitur yang bermanfaat bagi kesehatan para pengguna. Pada aplikasi uHealths juga terdapat forum di mana sesama pengguna dapat bertukar wawasan atau berdiskusi terkait masalah kesehatan.
+Topik yang kami angkat terkait G20 adalah Kesehatan Global, yang berupaya mendidik masyarakat tentang kesehatan global dan dampaknya terhadap dunia. Ide kami berkembang pesat di situs web kesehatan dan kebugaran _online_ yang menawarkan wawasan tentang kesehatan dan kebugaran terkini. Aplikasi kami, bernama uHealths, menyediakan berbagai konten yang dapat membantu pengguna aplikasi kami agar dapat menjalani hidup yang lebih sehat. Selain konten, aplikasi uHealths menyediakan beberapa fitur yang bermanfaat bagi kesehatan para pengguna. Pada aplikasi uHealths juga terdapat forum di mana sesama pengguna dapat bertukar wawasan atau berdiskusi terkait masalah kesehatan. Aplikasi ini dapat diakses secara mobile maupun melalui situs web.
  
 ## 📝Moduls dan Pembagiannya
 ### 1. Login dan Register : Farras Hafizhudin Indra Wijaya
