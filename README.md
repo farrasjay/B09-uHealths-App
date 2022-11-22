@@ -20,6 +20,10 @@ Frequently Asked Question atau FAQ berisi penjelasan terperinci atas pertanyaan 
 Pada forum, pengguna dapat membuka diskusi baru atau membalas forum pengguna lain. Forum ini disediakan agar antar pengguna dapat saling berinteraksi.
 ### 5. Health Status Tracker 
 Health Status Tracker menghitung dan memperbaharui status kesehatan pengguna secara umum sesuai dengan informasi yang diberikan oleh pengguna itu sendiri. Health status tracker melacak asupan kalori dan melihat status kesehatan pengguna untuk membantu memaksimalkan kebutuhan tubuh pengguna.
+
+## 🖥️ Integrasi Web Service
+
+Studolist Mobile menggunakan Flutter untuk mengintegrasikan front-end. Sementara itu, untuk back-end, digunakan implementasi REST API pada berkas views.py dan melakukan penyimpanan data pada berkas JSON untuk mendapatkan data yang telah dimasukkan pada forms baik lewat website atau aplikasi sebagai pengintegrasian data dengan *web service* atas situs web yang telah dibuat sebelumnya https://uhealths.herokuapp.com/uhealths/ .
  
 ## ✨Peran User
 
