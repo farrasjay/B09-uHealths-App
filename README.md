@@ -31,7 +31,7 @@ uHealths Mobile menggunakan Flutter untuk mengintegrasikan front-end aplikasinya
 Berikut adalah penjelasan lebih rinci terkait alur pengintegrasian dengan web.
 
 1. Menambahkan dependency http ke proyek, dependency ini digunakan untuk bertukar data melalui HTTP request, seperti GET, POST, PUT, dan lain-lain. Hal ini dapat dilakukan dengan menambahkan `flutter pub add http` pada terminal proyek Flutter untuk menambahkan package http. Lalu, pada file `android/app/src/main/AndroidManifest.xml`, ditambahkan kode untuk memperbolehkan akses Internet pada aplikasi Flutter yang sedang dibuat.
-2. Membuat model sesuai dengan respons dari data yang berasal dari web service. Untuk membuat model, data JSON dari situs web disalin lalu dikonversi ke dalam bahasa dart. Potongan kode yang telah dikonversi tersebut ditempel ke file yang berfungsi sebagai model.
+2. Membuat model sesuai dengan respons dari data yang berasal dari web service. Untuk membuat model, data JSON dari situs web disalin lalu diubah ke dalam bahasa dart. Potongan kode yang telah dikonversi tersebut ditempel ke file yang berfungsi sebagai model.
 3. Membuat http request ke web service menggunakan dependency http.
 4. Mengkonversikan objek yang didapatkan dari web service ke model. 
 5. Menampilkan data yang telah dikonversi ke aplikasi dengan `FutureBuilder`.
