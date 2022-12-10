@@ -1,0 +1,162 @@
+import 'package:uhealths/drawer.dart';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:uhealths/models/healthstatus.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:provider/provider.dart';
+import 'package:uhealths/pages/login.dart';
+
+class UserStatus {
+  static late Fields _getStatus;
+  static Fields get fetcher => _getStatus;
+}
+
+class HealthStatusPage extends StatefulWidget {
+  const HealthStatusPage({Key? key}) : super(key: key);
+
+  @override
+  _HealthStatusPageState createState() => _HealthStatusPageState();
+}
+
+class _HealthStatusPageState extends State<HealthStatusPage> {
+  Future<List<HealthStatus>> fetchHealthStatusPage() async {
+    final request = context.watch<CookieRequest>();
+    var response = await request.get(
+      "https://pbp-midterm-project-b09-production.up.railway.app/uhealths/json/"
+    );
+
+    // decode the response into the json form
+    var data = jsonDecode(utf8.decode(response.bodyBytes));
+
+    // convert the json data into HealthStatusPage object
+    List<HealthStatus> listHealthStatusPage = [];
+    for (var d in data) {
+      if (d != null) {
+        listHealthStatusPage.add(HealthStatus.fromJson(d));
+      }
+    }
+    return listHealthStatusPage;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text('Health Status'),
+        ),
+        drawer: DrawerClass(),
+        body: FutureBuilder(
+            future: fetchHealthStatusPage(),
+            builder: (context, AsyncSnapshot snapshot) {
+              if (snapshot.data == null) {
+                return const Center(child: CircularProgressIndicator());
+              } else {
+                if (!snapshot.hasData) {
+                  return Column(
+                    children: const [
+                      Text(
+                        "Status is empty, sadge D:",
+                        style:
+                            TextStyle(color: Color(0xff59A5D8), fontSize: 20),
+                      ),
+                      SizedBox(height: 8),
+                    ],
+                  );
+                } else {
+                  return ListView.builder(
+                      itemCount: snapshot.data!.length,
+                      itemBuilder: (_, index) => Container(
+                            margin: const EdgeInsets.symmetric(
+                                horizontal: 16, vertical: 12),
+                            padding: const EdgeInsets.all(20.0),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(15.0),
+                                boxShadow: const [
+                                  BoxShadow(
+                                      color: Colors.black, blurRadius: 2.0)
+                                ]),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                TextButton(
+                                  onPressed: () {
+                                    UserStatus._getStatus = snapshot.data![index].fields;
+                                    // print(UserStatus.fetcher.toString());
+                                    // Navigator.push(
+                                    //   context,
+                                    //   MaterialPageRoute(builder: (context) => HealthStatusPageUserStatus()),
+                                    // );
+                                    showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return Dialog(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    elevation: 15,
+                                    child: Container(
+                                      child: ListView(
+                                        padding: const EdgeInsets.only(top: 20, bottom: 20),
+                                        shrinkWrap: true,
+                                        children: <Widget>[
+                                          Center(child: const Text('Status Details')),
+                                          SizedBox(height: 20),
+                                          // TODO: Munculkan informasi yang didapat dari form
+                                          Text(
+                                            "Umur : " + UserStatus.fetcher.age.toString(),
+                                            textAlign: TextAlign.center,
+                                            ),
+                                          Text(
+                                            "Jenis Kelamin : " + UserStatus.fetcher.gender,
+                                            textAlign: TextAlign.center,
+                                            ),
+                                          Text(
+                                            "Berat Badan : " + UserStatus.fetcher.weight.toString(),
+                                            textAlign: TextAlign.center,
+                                            ),
+                                          Text(
+                                            "Tinggi Badan : " + UserStatus.fetcher.height.toString(),
+                                            textAlign: TextAlign.center,
+                                            ),
+                                          Text(
+                                            "Nilai BMI : " + UserStatus.fetcher.bmi.toStringAsFixed(2),
+                                            textAlign: TextAlign.center,
+                                            ),
+                                          Text(
+                                            "Nilai BMR : " + UserStatus.fetcher.bmr.toStringAsFixed(2),
+                                            textAlign: TextAlign.center,
+                                            ),
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text('Kembali'),
+                                          ), 
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                });
+                                  },
+                                  child: Text(
+                                  "${snapshot.data![index].fields.lastUpdate}",
+                                  textAlign: TextAlign.center,
+                                  style: const TextStyle(
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.blue,
+                                  ),
+                                  )
+                                ),
+                                const SizedBox(height: 10),
+                              ],
+                            ),
+                          ));
+                }
+              }
+            }));
+  }
+}
