@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:uhealthstugaskelompok/page/infografik1.dart';
 
 import 'page/infografik2.dart';
-import 'page/login_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -137,7 +136,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute<void>(
-                    builder: (BuildContext context) => LoginPage(),
+                    builder: (BuildContext context) => MyApp(), //diganti
                   ),
                 );
               },

@@ -9,7 +9,6 @@ import 'package:intl/intl.dart';
 import 'package:uhealthstugaskelompok/main.dart';
 
 import 'infografik1.dart';
-import 'login_page.dart';
 import 'package:provider/provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 

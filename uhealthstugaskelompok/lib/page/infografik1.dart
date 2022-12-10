@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'dart:convert';
-
 import 'package:uhealthstugaskelompok/main.dart';
-
-import '../functions/fetch_infografik2.dart';
+import '../functions/fetch_infografik1.dart';
 import 'infografik2.dart';
 import 'package:provider/provider.dart';
 
@@ -254,7 +252,7 @@ class _Infografik1State extends State<Infografik1Page> {
                 )
               ),
               FutureBuilder(
-                future: fetchCommentInfografik2(), //nnti harus diadjust
+                future: fetchCommentInfografik1(), 
                 builder: (context, AsyncSnapshot snapshot) {
                   if (snapshot.data == null) {
                     return const Center(
@@ -270,9 +268,9 @@ class _Infografik1State extends State<Infografik1Page> {
                           padding: const EdgeInsets.all(20.0),
                           child: Column(
                             children: [
-                              Text(snapshot.data![snapshot.data!.length - index - 1]['nama']),          //snapshot kenapa pake tanda seru
-                              Text(snapshot.data![snapshot.data!.length - index - 1]['date']),
-                              Text(snapshot.data![snapshot.data!.length - index - 1]['comment'])
+                              Text(snapshot.data![snapshot.data.length - index - 1]['fields']['nama']),          
+                              Text(snapshot.data![snapshot.data.length - index - 1]['fields']['date']),
+                              Text(snapshot.data![snapshot.data.length - index - 1]['fields']['comment'])
                             ]
                           )
                         )
