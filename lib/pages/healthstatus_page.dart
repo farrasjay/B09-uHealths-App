@@ -20,14 +20,10 @@ class HealthStatusPage extends StatefulWidget {
 }
 
 class _HealthStatusPageState extends State<HealthStatusPage> {
-  Future<List<HealthStatus>> fetchHealthStatusPage() async {
-    final request = context.watch<CookieRequest>();
-    var response = await request.get(
-      "https://pbp-midterm-project-b09-production.up.railway.app/uhealths/json/"
+  Future<List<HealthStatus>> fetchHealthStatusPage(CookieRequest request) async {
+    var data = await request.get(
+      "https://pbp-midterm-project-b09-production.up.railway.app/uhealths/ajax"
     );
-
-    // decode the response into the json form
-    var data = jsonDecode(utf8.decode(response.bodyBytes));
 
     // convert the json data into HealthStatusPage object
     List<HealthStatus> listHealthStatusPage = [];
@@ -41,13 +37,14 @@ class _HealthStatusPageState extends State<HealthStatusPage> {
 
   @override
   Widget build(BuildContext context) {
+    final request = context.watch<CookieRequest>();
     return Scaffold(
         appBar: AppBar(
           title: const Text('Health Status'),
         ),
         drawer: DrawerClass(),
         body: FutureBuilder(
-            future: fetchHealthStatusPage(),
+            future: fetchHealthStatusPage(request),
             builder: (context, AsyncSnapshot snapshot) {
               if (snapshot.data == null) {
                 return const Center(child: CircularProgressIndicator());

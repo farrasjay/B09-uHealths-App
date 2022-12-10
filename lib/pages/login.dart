@@ -139,29 +139,16 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           onPressed: () async {
                             if (_loginFormKey.currentState!.validate()) {
-                              final response = await request.login(
-                                "http://localhost:8000/login-flutter/", {
-                                'username': username,
-                                'password': password,
-                                });
-                                  // Uri.parse(
-                                  //     "http://localhost:8000/login-flutter/"),
-                                  // headers: <String, String>{
-                                  //   'Content-Type':
-                                  //       'application/json;charset=UTF-8'
-                                  // },
-                                  // body: jsonEncode(<String, String>{
-                                  //   'username': username,
-                                  //   'password': password
-                                  // }));
-                              // print(response.body);
-                              // print(jsonDecode(response.body));
-                              
-                              // print(request.cookies);
-                              // print(request.jsonData);
+                              final response = await request.post(
+                                "https://pbp-midterm-project-b09-production.up.railway.app/login-flutter/",
+                                jsonEncode(<String, String> {
+                                    'username': username,
+                                    'password': password
+                                  }
+                                )
+                              );
 
                               if (request.loggedIn) {
-                                // PassData.user_id = request.jsonData["user_id"];
                                 PassData.username = username;
                                 ScaffoldMessenger.of(context)
                                     .showSnackBar(SnackBar(
