@@ -3,14 +3,11 @@ import 'package:flutter_svg/svg.dart';
 import 'package:uhealths/constant.dart';
 import 'package:uhealths/drawer.dart';
 import 'package:uhealths/pages/login.dart';
-import 'package:pbp_django_auth/pbp_django_auth.dart';
-import 'package:provider/provider.dart';
 
 class UserMenuPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final request = context.watch<CookieRequest>();
     var size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
@@ -34,27 +31,23 @@ class UserMenuPage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: SingleChildScrollView(
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     SizedBox(
-                      height: size.height * 0.25,
+                      height: size.height * 0.21,
                     ),
                     Text(
-                      "Hello there!",
+                    "Hello there!", style: TextStyle(fontSize: 18),
                     ),
                     SizedBox(height: 10),
-                    
-                    if (!request.loggedIn) Text("Anonymous", style: TextStyle(fontWeight: FontWeight.bold),)
-                    else
-                      Text(
-                        PassData.fetcher,
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
+                    Text(
+                      PassData.fetcher,
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+                    ),
                     SizedBox(height: 10),
                     SizedBox(
-                      width: size.width * .6, // it just take 60% of total width
                       child: Text(
-                        "What are you up to today?",
+                        "What are you up to today?", style: TextStyle(fontSize: 18)
                       ),
                     ),
                     SizedBox(height: 20),
@@ -77,7 +70,7 @@ class UserMenuPage extends StatelessWidget {
                       child: Row(
                         children: <Widget>[
                           SvgPicture.asset(
-                            "assets/icons/Meditation_women_small.svg",
+                            "assets/icons/calculator.svg",
                           ),
                           SizedBox(width: 20),
                           Expanded(
@@ -86,7 +79,7 @@ class UserMenuPage extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Text(
-                                  "BMI & BMR Calculator", style: TextStyle(color: Colors.white),
+                                  "BMI & BMR Calculator", style: TextStyle(color: Color.fromARGB(255, 255, 225, 0), fontWeight: FontWeight.bold),
                                 ),
                                 Text("Track your most recent health status!", style: TextStyle(color: Colors.white))
                               ],
@@ -94,7 +87,7 @@ class UserMenuPage extends StatelessWidget {
                           ),
                           Padding(
                             padding: EdgeInsets.all(10),
-                            child: SvgPicture.asset("assets/icons/Lock.svg"),
+                            child: SvgPicture.asset("assets/icons/unlocked.svg"),
                           ),
                         ],
                       ),
@@ -119,7 +112,7 @@ class UserMenuPage extends StatelessWidget {
                       child: Row(
                         children: <Widget>[
                           SvgPicture.asset(
-                            "assets/icons/Meditation_women_small.svg",
+                            "assets/icons/infographic.svg",
                           ),
                           SizedBox(width: 20),
                           Expanded(
@@ -128,7 +121,7 @@ class UserMenuPage extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Text(
-                                  "Infographics", style: TextStyle(color: Colors.white),
+                                  "Infographics", style: TextStyle(color: Color.fromARGB(255, 255, 225, 0), fontWeight: FontWeight.bold),
                                 ),
                                 Text("Get the most updated info about healthy lifestyle!", style: TextStyle(color: Colors.white))
                               ],
@@ -136,7 +129,7 @@ class UserMenuPage extends StatelessWidget {
                           ),
                           Padding(
                             padding: EdgeInsets.all(10),
-                            child: SvgPicture.asset("assets/icons/Lock.svg"),
+                            child: SvgPicture.asset("assets/icons/unlocked.svg"),
                           ),
                         ],
                       ),
@@ -161,7 +154,7 @@ class UserMenuPage extends StatelessWidget {
                       child: Row(
                         children: <Widget>[
                           SvgPicture.asset(
-                            "assets/icons/Meditation_women_small.svg",
+                            "assets/icons/discussion.svg",
                           ),
                           SizedBox(width: 20),
                           Expanded(
@@ -170,7 +163,7 @@ class UserMenuPage extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Text(
-                                  "Discussions", style: TextStyle(color: Colors.white),
+                                  "Discussions", style: TextStyle(color: Color.fromARGB(255, 255, 225, 0), fontWeight: FontWeight.bold),
                                 ),
                                 Text("Interact with other health-enthusiast!", style: TextStyle(color: Colors.white))
                               ],
@@ -178,7 +171,7 @@ class UserMenuPage extends StatelessWidget {
                           ),
                           Padding(
                             padding: EdgeInsets.all(10),
-                            child: SvgPicture.asset("assets/icons/Lock.svg"),
+                            child: SvgPicture.asset("assets/icons/unlocked.svg"),
                           ),
                         ],
                       ),

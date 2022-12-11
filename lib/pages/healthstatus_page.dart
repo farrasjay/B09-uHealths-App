@@ -19,6 +19,8 @@ class HealthStatusPage extends StatefulWidget {
   _HealthStatusPageState createState() => _HealthStatusPageState();
 }
 
+// "https://pbp-midterm-project-b09-production.up.railway.app/uhealths/ajax"
+// "http://localhost:8000/uhealths/ajax"
 class _HealthStatusPageState extends State<HealthStatusPage> {
   Future<List<HealthStatus>> fetchHealthStatusPage(CookieRequest request) async {
     var data = await request.get(
@@ -81,11 +83,6 @@ class _HealthStatusPageState extends State<HealthStatusPage> {
                                 TextButton(
                                   onPressed: () {
                                     UserStatus._getStatus = snapshot.data![index].fields;
-                                    // print(UserStatus.fetcher.toString());
-                                    // Navigator.push(
-                                    //   context,
-                                    //   MaterialPageRoute(builder: (context) => HealthStatusPageUserStatus()),
-                                    // );
                                     showDialog(
                                 context: context,
                                 builder: (context) {
@@ -101,7 +98,6 @@ class _HealthStatusPageState extends State<HealthStatusPage> {
                                         children: <Widget>[
                                           Center(child: const Text('Status Details')),
                                           SizedBox(height: 20),
-                                          // TODO: Munculkan informasi yang didapat dari form
                                           Text(
                                             "Umur : " + UserStatus.fetcher.age.toString(),
                                             textAlign: TextAlign.center,

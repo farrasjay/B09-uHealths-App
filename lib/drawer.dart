@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uhealths/pages/healthstatus_page.dart';
+import 'package:uhealths/pages/login.dart';
 import 'package:uhealths/pages/home.dart';
 import 'package:uhealths/pages/menu.dart';
 
@@ -18,14 +19,14 @@ class _DrawerClassState extends State<DrawerClass> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            const UserAccountsDrawerHeader(
+            UserAccountsDrawerHeader(
               currentAccountPicture: CircleAvatar(
                 backgroundImage: NetworkImage(
                     'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'),
               ),
-              accountEmail: Text('Anonymous@uhealths.co'),
+              accountEmail: Text(PassData.fetcher + '@uhealths.co'),
               accountName: Text(
-                'Anonymous',
+                PassData.fetcher,
                 style: TextStyle(fontSize: 20),
               ),
               decoration: BoxDecoration(
@@ -45,6 +46,21 @@ class _DrawerClassState extends State<DrawerClass> {
                     builder: (BuildContext context) => const MyHomePage(
                       title: 'Home',
                     ),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.password),
+              title: const Text(
+                'Login',
+                style: TextStyle(fontSize: 20),
+              ),
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (BuildContext context) => const LoginPage(),
                   ),
                 );
               },
