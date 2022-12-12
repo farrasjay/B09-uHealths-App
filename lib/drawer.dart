@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:uhealths/faq/page/question.dart';
 import 'package:uhealths/pages/healthstatus_page.dart';
 import 'package:uhealths/pages/home.dart';
 import 'package:uhealths/pages/menu.dart';
+
 
 class DrawerClass extends StatefulWidget {
   DrawerClass({Key? key}) : super(key: key);
@@ -146,8 +148,8 @@ class _DrawerClassState extends State<DrawerClass> {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute<void>(
-                    builder: (BuildContext context) => const MyHomePage(
-                      title: 'FAQ',
+                    builder: (BuildContext context) => const QuestionPage(
+                      // title: 'FAQ',
                     ),
                   ),
                 );
