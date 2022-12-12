@@ -34,7 +34,7 @@ class UserMenuPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     SizedBox(
-                      height: size.height * 0.21,
+                      height: size.height * 0.225,
                     ),
                     Text(
                     "Hello there!", style: TextStyle(fontSize: 18),
@@ -50,9 +50,9 @@ class UserMenuPage extends StatelessWidget {
                         "What are you up to today?", style: TextStyle(fontSize: 18)
                       ),
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: 5),
                     Container(
-                      margin: EdgeInsets.symmetric(vertical: 20),
+                      margin: EdgeInsets.symmetric(vertical: 10),
                       padding: EdgeInsets.all(10),
                       height: 90,
                       decoration: BoxDecoration(

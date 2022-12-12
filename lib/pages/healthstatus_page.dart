@@ -71,7 +71,7 @@ class _HealthStatusPageState extends State<HealthStatusPage> {
                       Text(
                         "Status is empty, sadge D:",
                         style:
-                            TextStyle(color: Color(0xff59A5D8), fontSize: 20),
+                            TextStyle(color: Color(0xFF0D47A1), fontSize: 20),
                       ),
                       SizedBox(height: 8),
                     ],
@@ -110,7 +110,7 @@ class _HealthStatusPageState extends State<HealthStatusPage> {
                                         padding: const EdgeInsets.only(top: 20, bottom: 20),
                                         shrinkWrap: true,
                                         children: <Widget>[
-                                          Center(child: const Text('Status Details')),
+                                          Center(child: const Text('Health Status Details', style: TextStyle(fontWeight: FontWeight.bold))),
                                           SizedBox(height: 20),
                                           Text(
                                             "Umur : " + UserStatus.fetcher.age.toString(),
@@ -154,7 +154,7 @@ class _HealthStatusPageState extends State<HealthStatusPage> {
                                   style: const TextStyle(
                                     fontSize: 24,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.blue,
+                                    color: Color(0xFF0D47A1)
                                   ),
                                   )
                                 ),

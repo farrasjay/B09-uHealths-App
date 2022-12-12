@@ -3,6 +3,8 @@ import 'package:uhealths/pages/healthstatus_page.dart';
 import 'package:uhealths/pages/login.dart';
 import 'package:uhealths/pages/home.dart';
 import 'package:uhealths/pages/menu.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:provider/provider.dart';
 
 class DrawerClass extends StatefulWidget {
   DrawerClass({Key? key}) : super(key: key);
@@ -15,6 +17,7 @@ class _DrawerClassState extends State<DrawerClass> {
 
   @override
   Widget build(BuildContext context) {
+    final request = context.read<CookieRequest>();
     return Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
@@ -24,13 +27,13 @@ class _DrawerClassState extends State<DrawerClass> {
                 backgroundImage: NetworkImage(
                     'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'),
               ),
-              accountEmail: Text(PassData.fetcher + '@uhealths.co'),
+              accountEmail: Text(PassData.fetcher + '@uhealths.co', style: TextStyle(color: Colors.white),),
               accountName: Text(
                 PassData.fetcher,
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(fontSize: 20, color: Colors.white),
               ),
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 0, 15, 125),
+                color: Color(0xFF0D47A1),
               ),
             ),
             ListTile(
@@ -61,6 +64,36 @@ class _DrawerClassState extends State<DrawerClass> {
                   context,
                   MaterialPageRoute<void>(
                     builder: (BuildContext context) => const LoginPage(),
+                  ),
+                );
+              },
+            ),
+             ListTile(
+              leading: const Icon(Icons.exit_to_app),
+              title: const Text("Logout", style: TextStyle(fontSize: 20)),
+              onTap: () async {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          UserMenuPage(),
+                ));
+                final response = await request.logout(
+                    "https://pbp-midterm-project-b09-production.up.railway.app/logout-flutter/");
+                // "http://localhost:8000/logout-flutter/");
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Row(
+                      children: const [
+                        Icon(Icons.info_outline_rounded,
+                            size: 30, color: Colors.white),
+                        Spacer(
+                          flex: 1,
+                        ),
+                        Text("Logout successful",
+                            style: TextStyle(color: Colors.white, fontSize: 20))
+                      ],
+                    ),
                   ),
                 );
               },

@@ -20,7 +20,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     listContentConfig.add(
       const ContentConfig(
-        title: "Welcome To uHealths",
+        title: "We Are uHealths",
         description:
             "We thrives in an online health and wellness website that offers insight into the most current health and wellness, as well as contents that helps our user to be able to live healthier lives.",
         pathImage: "assets/images/slide1.png",
@@ -29,9 +29,9 @@ class _MyHomePageState extends State<MyHomePage> {
     );
     listContentConfig.add(
       const ContentConfig(
-        title: "User Centered Healthcare",
+        title: "User Centered",
         description:
-            "We're here to help you get your health on track with a new, fresh approach by providing you with infographics that will help you beat your goals and live a better life. We have a forum where you can interact with other health-enthusiasts. You can post questions, ask for advice, or just share what you're doing to improve your health.",
+            "We're here to help you get your health on track with a new, fresh approach by providing you with infographics that will help you beat your goals and live a better life. We have a forum where you can interact with other health-enthusiasts.",
         pathImage: "assets/images/slide2.png",
         backgroundColor: Color.fromARGB(255, 10, 50, 75),
       ),
@@ -54,12 +54,53 @@ class _MyHomePageState extends State<MyHomePage> {
       );
   }
 
+  Widget renderNextBtn() {
+    return Icon(
+      Icons.navigate_next,
+      color: Colors.black54,
+      size: 35.0,
+    );
+  }
+
+  Widget renderDoneBtn() {
+    return Icon(
+      Icons.done,
+      color: Colors.black54,
+    );
+  }
+
+  Widget renderSkipBtn() {
+    return Icon(
+      Icons.skip_next,
+      color: Colors.black54,
+    );
+  }
+
+  ButtonStyle uHealthsButtonStyle() {
+    return ButtonStyle(
+      shape: MaterialStateProperty.all<OutlinedBorder>(StadiumBorder()),
+      backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+      overlayColor: MaterialStateProperty.all<Color>(Colors.white),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return IntroSlider(
       key: UniqueKey(),
       listContentConfig: listContentConfig,
+      // Skip button
+      renderSkipBtn: renderSkipBtn(),
+      skipButtonStyle: uHealthsButtonStyle(),
+
+      // Next button
+      renderNextBtn: renderNextBtn(),
+      nextButtonStyle: uHealthsButtonStyle(),
+
+      // Done button
+      renderDoneBtn: renderDoneBtn(),
       onDonePress: onDonePress,
+      doneButtonStyle: uHealthsButtonStyle(),
     );
   }
 }
