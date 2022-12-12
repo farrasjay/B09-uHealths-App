@@ -32,7 +32,7 @@ class _CommentFormState extends State<CommentForm> {
         if (newValue['status'].toString() == "success") {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text("Comment successfully added!"),
-            backgroundColor: Colors.indigo,
+            backgroundColor: Colors.indigo[900],
           ));
           Navigator.pushReplacement(
             context,
@@ -57,7 +57,7 @@ class _CommentFormState extends State<CommentForm> {
     return Scaffold(
 
       appBar: AppBar(
-        title: Text('Add Comment'),
+        title: Text('Add Forum Comment'),
       ),
       drawer: DrawerClass(),
       body: Form(

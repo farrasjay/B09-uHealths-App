@@ -53,7 +53,7 @@ class _ForumDiscussionDetailState extends State<ForumDiscussionDetail> {
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(20),
-          height: 800,
+          height: 500,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children:[
@@ -101,11 +101,12 @@ class _ForumDiscussionDetailState extends State<ForumDiscussionDetail> {
                     ),
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
                 ],
               ),
-              Column(crossAxisAlignment: CrossAxisAlignment.center, 
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center, 
                 children:[
                   TextButton(
                     style: ButtonStyle(
@@ -120,7 +121,7 @@ class _ForumDiscussionDetailState extends State<ForumDiscussionDetail> {
                       );
                     },
                     child: const SizedBox(
-                      height: 30,
+                      height: 40,
                       width: 190,
                       child: Center(
                         child: Text(
@@ -136,19 +137,19 @@ class _ForumDiscussionDetailState extends State<ForumDiscussionDetail> {
                   if (request.loggedIn)
                     TextButton(
                       style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(Colors.indigo),
+                        backgroundColor: MaterialStateProperty.all(Colors.indigo[900]),
                       ),
                       onPressed: () {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => CommentForm(thisForum:widget.thisForum)
+                            builder: (context) => CommentForm(thisForum:widget.thisForum)
                           ),
                         );
                       },
                       child: const SizedBox(
                         height: 40,
-                        width: 200,
+                        width: 190,
                         child: Center(
                           child: Text(
                             "Add New Comment",

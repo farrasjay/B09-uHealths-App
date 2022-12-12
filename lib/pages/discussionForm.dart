@@ -135,7 +135,7 @@ class _ForumFormState extends State<DiscussionForm> {
                     style: TextStyle(color: Colors.white),
                   ),
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.indigo),
+                    backgroundColor: MaterialStateProperty.all(Colors.indigo[900]),
                   ),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
