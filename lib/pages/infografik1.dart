@@ -4,7 +4,7 @@ import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:uhealthstugaskelompok/drawer.dart';
 import 'dart:convert';
 import 'package:uhealthstugaskelompok/main.dart';
-import 'package:uhealthstugaskelompok/page/infografik_home.dart';
+import 'package:uhealthstugaskelompok/pages/infografik_home.dart';
 import '../functions/fetch_infografik1.dart';
 import 'infografik2.dart';
 import 'package:provider/provider.dart';
