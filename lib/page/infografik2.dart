@@ -62,17 +62,23 @@ class _Infografik2State extends State<Infografik2Page> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
             // if _counter % 2 == 0, display "Even" with  red color, else display "Odd" with blue color
-            Text(
+            Padding(
+                padding: EdgeInsets.only(left: 200, right: 200, top: 30, bottom: 15),
+                child: Text(
               'Menu Makanan 4 Sehat 5 Sempurna dan Manfaatnya Bagi Kesehatan',
               style: TextStyle(
-                height: 3, fontSize: 50, fontWeight: FontWeight.bold
+                height: 2, fontSize: 40, fontWeight: FontWeight.bold
               ),
+            )
             ),
-            Text(
+            Padding(
+              padding: EdgeInsets.all(75),
+              child: Text(
               'Apa yang dimaksud dengan makanan 4 sehat 5 sempurna? Makanan 4 sehat 5 sempurna adalah program pemerintah yang mengharuskan setiap orang mengonsumsi lebih dari 1 jenis makanan dalam satu waktu. Makanan 4 sehat 5 sempurna terdiri dari makanan pokok, lauk pauk, sayur-sayuran, buah-buahan dan juga susu untuk memenuhi kebutuhan nutrisi tubuh. Lalu, apa saja komponen penyusun pola makan 4 sehat 5 sempurna?',
               style: TextStyle(
                 fontSize: 14,
               ),
+            )
             ),
             Text(
               '1. Makanan Pokok',
@@ -80,11 +86,14 @@ class _Infografik2State extends State<Infografik2Page> {
                 height: 2, fontSize: 24, fontWeight: FontWeight.bold
               ),
             ),
-            Text(
+            Padding(
+              padding: EdgeInsets.only(left: 75, right: 75, top: 25, bottom: 50),
+              child: Text(
               'Makanan pokok merupakan makanan yang kaya akan karbohidrat, suatu zat yang sangat diperlukan tubuh untuk membuat energi. Di Indonesia, makanan pokok umumnya berupa nasi, tetapi di beberapa daerah, makanan pokok jenis lain juga dikonsumsi seperti contohnya, kombinasi beras dan jagung yang umum dikonsumsi di Madura dan sagu di Papua.',
               style: TextStyle(
                 fontSize: 14,
               ),
+            )
             ),
             Text(
               '2. Lauk Pauk',
@@ -92,11 +101,14 @@ class _Infografik2State extends State<Infografik2Page> {
                 height: 2, fontSize: 24, fontWeight: FontWeight.bold
               ),
             ),
-            Text(
+            Padding(
+              padding: EdgeInsets.only(left: 75, right: 75, top: 25, bottom: 50),
+              child: Text(
               'Lauk pauk merupakan bahan makanan yang mengandung kadar protein tinggi. Pada usia tumbuh kembang anak, protein sangat diperlukan untuk membangun tubuh. Sedangkan pada usia dewasa, protein dapat diubah menjadi cadangan energi. Selain itu, protein juga menjadi salah satu zat yang penting untuk sistem kekebalan tubuh. Protein dapat diperoleh dari dua jenis makanan, yakni nabati dan hewani. Protein nabati umumnya berasal dari kacang-kacangan dan olahannya, seperti tahu dan tempe yang merupakan olahan dari kacang kedelai. Sementara itu, protein hewani dapat diperoleh dengan mengonsumsi daging dan olahannya. Namun, konsumsi protein hewani sebaiknya dibatasi karena sumber protein hewani juga mengandung lemak dan kolesterol yang dapat berbahaya bagi tubuh jika dikonsumsi berlebih. Protein dari daging unggas dan makanan laut lebih sehat dibanding daging merah.',
               style: TextStyle(
                 fontSize: 14,
               ),
+            )
             ),
             Text(
               '3. Sayuran',
@@ -104,11 +116,14 @@ class _Infografik2State extends State<Infografik2Page> {
                 height: 2, fontSize: 24, fontWeight: FontWeight.bold
               ),
             ),
-            Text(
+            Padding(
+              padding: EdgeInsets.only(left: 75, right: 75, top: 25, bottom: 50),
+              child: Text(
               'Selain memiliki kandungan serat yang baik untuk proses pencernaan, sayuran juga mengandung berbagai vitamin dan mineral yang diperlukan oleh tubuh untuk bekerja dengan baik. Misalnya, wortel kaya akan vitamin A yang diperlukan untuk mata, sementara bayam mengandung vitamin A, vitamin B kompleks, vitamin C, vitamin E, dan vitamin K. Agar lebih mudah dalam memilah manfaat dan kegunaan sayur dan buah, berikut klasifikasi manfaat sayur dan buah berdasarkan warnanya. Warna Merah: Sayur dan buah yang berwarna merah memiliki kandungan nutrisi yang berguna untuk melindungi tubuh dari virus, memperlancar aliran darah ke jantung, dan mencegah penuaan dini. Selain itu, kandungan lainnya dalam sayur dan buah adalah lycopene yang ditemukan dalam semangka dan tomat.',
               style: TextStyle(
                 fontSize: 14,
               ),
+            )
             ),
             Text(
               '4. Buah-Buahan',
@@ -116,11 +131,14 @@ class _Infografik2State extends State<Infografik2Page> {
                 height: 2, fontSize: 24, fontWeight: FontWeight.bold
               ),
             ),
-            Text(
+            Padding(
+              padding: EdgeInsets.only(left: 75, right: 75, top: 25, bottom: 50),
+              child: Text(
               'Konsumsi buah-buahan tidak kalah pentingnya dengan sayuran dan bahan makanan lain. Seperti sayuran, buah-buahan juga kaya akan serat dan vitamin yang diperlukan oleh tubuh untuk menjaga kesehatan. Contohnya, buah jeruk kaya akan vitamin C, sementara buah naga mengandung zat besi yang diperlukan untuk mencegah anemia. Meskipun dianggap mewah, sebenarnya kita dapat mengonsumsi buah-buahan dengan harga terjangkau. Indonesia diberkahi dengan tanah yang subur dan iklim tropis, yang memungkinkan berbagai jenis tanaman buah tumbuh subur. Buah-buahan musiman seperti mangga dan duku, atau buah yang tersedia sepanjang tahun seperti pisang, dapat diperoleh dengan mudah dan murah.',
               style: TextStyle(
                 fontSize: 14,
               ),
+            )
             ),
             Text(
               '5. Susu',
@@ -128,11 +146,14 @@ class _Infografik2State extends State<Infografik2Page> {
                 height: 2, fontSize: 24, fontWeight: FontWeight.bold
               ),
             ),
-            Text(
+            Padding(
+              padding: EdgeInsets.only(left: 75, right: 75, top: 25, bottom: 50),
+              child: Text(
               'Susu adalah minuman yang cocok sebagai pelengkap asupan gizi karena memiliki kandungan protein yang cukup tinggi. Susu merupakan asupan kalsium, yang berperan penting untuk menjaga keutuhan tulang. Namun, perlu diingat pula bahwa tidak semua orang dapat mengonsumsi susu karena beberapa orang dapat mengalami intoleransi laktosa yang menyebabkan penderitanya tidak dapat mencerna laktosa, zat yang banyak terkandung pada susu. Berikut susu yang biasa di konsumsi: Susu Kedelai Susu kedelai memiliki kandungan lemak jenuh yang rendah. Jika kamu sedang dalam program diet, susu kedelai dapat membantu karena cocok dijadikan susu pengganti susu sapi. Susu Almond Susu dari kacang almond cocok dikonsumsi oleh kamu yang alergi pada laktosa. Laktosa yang berlebih dapat menyebabkan produksi gas dan diare. Susu Sapi Susu sapi mengandung kalori yang cukup banyak, yaitu berkisar antara 80-150 kalori. Susu sapi baik untuk menambah energi bagi perempuan saat sedang PMS serta dapat mengurangi stres. Setelah mengetahui manfaat dari masing-masing elemen 4 sehat 5 sempurna, kini saatnya kita untuk mencocokkan menu makanan sehari-hari agar masing-masing elemen tersebut terpenuhi. Lengkapi juga dengan Program 12 Hari Realfood yang lengkap menjaga Realfoodfam dan keluarga tercinta.',
               style: TextStyle(
                 fontSize: 14,
               ),
+            )
             ),
           ],
           ),
