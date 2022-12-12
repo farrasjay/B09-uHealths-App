@@ -27,6 +27,7 @@ class Comment1 {
 
 class _Infografik1State extends State<Infografik1Page> {
   final _formKey = GlobalKey<FormState>();   //buat apaya
+  final TextEditingController _komen = TextEditingController();
   String komen = "";
   
   @override
@@ -190,10 +191,12 @@ class _Infografik1State extends State<Infografik1Page> {
                       hintText: "Add a new comment",
                       labelText: "Comment",
                     ),
+                       controller: _komen,
                     // Menambahkan behavior saat nama diketik  
                     onChanged: (String? value) {
                       setState(() {
                         if (value != "") {
+                        _komen.text = value!;
                         komen = value!;
                         }
                       });
@@ -202,6 +205,7 @@ class _Infografik1State extends State<Infografik1Page> {
                     onSaved: (String? value) {
                       setState(() {
                         if (value != "") {
+                        _komen.text = value!;
                         komen = value!;
                         }
                       });
@@ -220,8 +224,11 @@ class _Infografik1State extends State<Infografik1Page> {
                       ),
                       onPressed: () async{
                         if (_formKey.currentState!.validate() && komen != "") {
+                          print("Komen: " + komen.toString());
+                          addComment1(_komen.text);
                           addComment1(komen);
                         }
+                        print("Tidak masuk fungsi");
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute<void>(
