@@ -27,7 +27,7 @@ class Comment1 {
 
 class _Infografik1State extends State<Infografik1Page> {
   final _formKey = GlobalKey<FormState>();   //buat apaya
-  String komen = "";
+  final TextEditingController komen = TextEditingController();
   
   @override
   Widget build(BuildContext context) {
@@ -190,11 +190,12 @@ class _Infografik1State extends State<Infografik1Page> {
                       hintText: "Add a new comment",
                       labelText: "Comment",
                     ),
+                       controller: komen,
                     // Menambahkan behavior saat nama diketik  
                     onChanged: (String? value) {
                       setState(() {
                         if (value != "") {
-                        komen = value!;
+                        komen.text = value!;
                         }
                       });
                     },
@@ -202,7 +203,7 @@ class _Infografik1State extends State<Infografik1Page> {
                     onSaved: (String? value) {
                       setState(() {
                         if (value != "") {
-                        komen = value!;
+                        komen.text = value!;
                         }
                       });
                     },
