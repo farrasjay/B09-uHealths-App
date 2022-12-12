@@ -133,7 +133,7 @@ class _QuestionPageState extends State<QuestionPage> {
                       // style: ButtonStyle(elevation: MaterialStateProperty(12.0 )),
                       style: ElevatedButton.styleFrom(
                           elevation: 12.0,
-                          textStyle: const TextStyle(color: Colors.blue),
+                          textStyle: const TextStyle(color: Color(0xFF0D47A1)),
                           fixedSize: Size.fromWidth(180)),
                       child: Row(children: [Icon(Icons.add_circle_outline), Text("Send Your Question")],),
                 ),

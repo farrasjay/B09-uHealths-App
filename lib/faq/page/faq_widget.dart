@@ -221,6 +221,13 @@ class _FutureQuestionCardState extends State<FutureQuestionCard> {
                             mainAxisSize: MainAxisSize.min,
                             children: <Widget>[
                               Card(
+                                shape: RoundedRectangleBorder(
+                                  side: BorderSide(
+                                    color: Color(0xFF0D47A1), //<-- SEE HERE
+                                  ),
+                                  borderRadius: BorderRadius.circular(20.0),
+                                ),
+                                
                                 child: Column(
                                   mainAxisSize: MainAxisSize.min,
                                   children: <Widget>[
@@ -254,14 +261,20 @@ class _FutureQuestionCardState extends State<FutureQuestionCard> {
                                             crossAxisAlignment: CrossAxisAlignment.start,
                                             mainAxisSize: MainAxisSize.min,
                                             children: [
-                                              Padding(
-                                                padding: const EdgeInsets.fromLTRB(10, 5, 10, 3),
+                                              Container(
+                                                      decoration: const BoxDecoration(
+                                                        color: Color(0xFF0D47A1),
+                                                        borderRadius: BorderRadius.only(topRight: Radius.circular(20), topLeft: Radius.circular(20))
+                                                      ),
+                                                      child: Padding(
+                                                        padding: const EdgeInsets.fromLTRB(10, 5, 10, 3),
 
-                                                child: Text(question.fields.question, style: TextStyle(fontFamily: '/Cairo/Cairo-Bold.ttf', fontSize: 23),
-                                                ),
-                                              ),
+                                                        child: Text(question.fields.question, style: TextStyle(fontFamily: '/Cairo/Cairo-Bold.ttf', fontSize: 23),
+                                                        ),
+                                                      ),
+                                                    ),
                                               Padding(
-                                                padding: const EdgeInsets.all(8.0),
+                                                padding: const EdgeInsets.all(15),
                                                 child: Visibility(child: Text(question.fields.answer, style: TextStyle(fontFamily: '/Cairo/Cairo-SemiBold.ttf')), visible: show.elementAt(question.pk)),
                                               ) ,
                                             ],
@@ -283,10 +296,16 @@ class _FutureQuestionCardState extends State<FutureQuestionCard> {
                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                   mainAxisSize: MainAxisSize.min,
                                                   children: [
-                                                    Padding(
-                                                      padding: const EdgeInsets.fromLTRB(10, 5, 10, 3),
+                                                    Container(
+                                                      decoration: const BoxDecoration(
+                                                        color: Color(0xFF0D47A1),
+                                                        borderRadius: BorderRadius.only(topRight: Radius.circular(20), topLeft: Radius.circular(20))
+                                                      ),
+                                                      child: Padding(
+                                                        padding: const EdgeInsets.fromLTRB(10, 5, 10, 3),
 
-                                                      child: Text(question.fields.question, style: TextStyle(fontFamily: '/Cairo/Cairo-Bold.ttf', fontSize: 23),
+                                                        child: Text(question.fields.question, style: TextStyle(fontFamily: '/Cairo/Cairo-Bold.ttf', fontSize: 23),
+                                                        ),
                                                       ),
                                                     ),
                                                     Padding(
@@ -304,8 +323,9 @@ class _FutureQuestionCardState extends State<FutureQuestionCard> {
                                     );}
                                       }
                                     ),
-                                    IconButton(onPressed:() {
+                                    IconButton(iconSize: 36,onPressed:() {
                                       print("STATUS : " +status_user.toString());
+                                    
                                       setState(() {
                                         show[question.pk] = show.elementAt(question.pk) == true ? false : true;
                                         // if(status_user){
