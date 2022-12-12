@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uhealths/faq/page/question.dart';
 import 'package:uhealths/pages/healthstatus_page.dart';
+import 'package:uhealths/pages/infografik_home.dart';
 import 'package:uhealths/pages/login.dart';
 import 'package:uhealths/pages/home.dart';
 import 'package:uhealths/pages/menu.dart';
@@ -132,8 +133,8 @@ class _DrawerClassState extends State<DrawerClass> {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute<void>(
-                    builder: (BuildContext context) => const MyHomePage(
-                      title: 'Infographics',
+                    builder: (BuildContext context) => InfografikHomePage(
+                      // title: 'Infographics',
                     ),
                   ),
                 );

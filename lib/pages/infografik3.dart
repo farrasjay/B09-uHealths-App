@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'dart:convert';
-import 'package:uhealthstugaskelompok/main.dart';
+import 'package:uhealths/main.dart';
 import '../drawer.dart';
 import '../functions/fetch_infografik1.dart';
 import 'infografik1.dart';

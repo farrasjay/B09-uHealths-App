@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:pbp_django_auth/pbp_django_auth.dart';
-import 'package:uhealthstugaskelompok/drawer.dart';
+import 'package:uhealths/drawer.dart';
 import 'dart:convert';
-import 'package:uhealthstugaskelompok/main.dart';
-import 'package:uhealthstugaskelompok/page/infografik_home.dart';
+import 'package:uhealths/main.dart';
+import 'package:uhealths/pages/infografik_home.dart';
 import '../functions/fetch_infografik1.dart';
 import 'infografik2.dart';
 import 'package:provider/provider.dart';
@@ -208,7 +208,7 @@ class _Infografik1State extends State<Infografik1Page> {
                     },
                     // Validator sebagai validasi form 
                     validator: (String? value) {
-                      if (value == null || value.isEmpty) {
+                      if (value == '' || value!.isEmpty) {
                         return 'It has no comment';
                       }
                       return null;

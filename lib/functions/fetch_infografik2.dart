@@ -1,6 +1,6 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import '../model/model_infografik2.dart';
+import '../models/model_infografik2.dart';
 
 Future<List<CommentInfografik2>> fetchCommentInfografik2() async {
   var url = Uri.parse('https://pbp-midterm-project-b09-production.up.railway.app/infografis/jsonkedua/');

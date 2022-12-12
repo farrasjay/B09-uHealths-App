@@ -4,7 +4,7 @@ import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
 import '../constant.dart';
 import '../drawer.dart';
-import '../page/login.dart';
+import '../pages/login.dart';
 import 'infografik1.dart';
 import 'infografik2.dart';
 import 'infografik3.dart';
