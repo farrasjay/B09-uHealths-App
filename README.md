@@ -1,4 +1,8 @@
 # uHealths
+[![Build status](https://build.appcenter.ms/v0.1/apps/5af80e3d-efeb-4b43-8438-506efc705564/branches/main/badge)](https://appcenter.ms)
+
+**Download** |
+[uHealths](https://install.appcenter.ms/orgs/pbp-b09/apps/uhealths/distribution_groups/b09-uhealths-flutter)
 
 ## 👨‍💻 Anggota Kelompok PBP - B09👩‍💻
 1. Farras Hafizhudin Indra Wijaya - 2106652682
