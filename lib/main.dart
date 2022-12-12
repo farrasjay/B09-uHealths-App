@@ -22,7 +22,12 @@ class uHealthsApp extends StatelessWidget {
                 debugShowCheckedModeBanner: false,
                 title: 'uHealths',
                 theme: ThemeData(
-                    primarySwatch: Colors.blue,
+                    primarySwatch: Colors.indigo,
+                    appBarTheme: AppBarTheme(
+                    iconTheme: IconThemeData(color: Colors.white),
+                    color: Color(0xFF0D47A1),
+                    foregroundColor: Colors.white,
+                  ),
                 ),
                 home: const MyHomePage(title: 'uHealths'),
                 routes: {

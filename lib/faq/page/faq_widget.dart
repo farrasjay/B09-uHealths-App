@@ -262,6 +262,8 @@ class _FutureQuestionCardState extends State<FutureQuestionCard> {
                                             mainAxisSize: MainAxisSize.min,
                                             children: [
                                               Container(
+                                                width: double.infinity,
+                                        
                                                       decoration: const BoxDecoration(
                                                         color: Color(0xFF0D47A1),
                                                         borderRadius: BorderRadius.only(topRight: Radius.circular(20), topLeft: Radius.circular(20))
@@ -269,7 +271,7 @@ class _FutureQuestionCardState extends State<FutureQuestionCard> {
                                                       child: Padding(
                                                         padding: const EdgeInsets.fromLTRB(10, 5, 10, 3),
 
-                                                        child: Text(question.fields.question, style: TextStyle(fontFamily: '/Cairo/Cairo-Bold.ttf', fontSize: 23),
+                                                        child: Text(question.fields.question, style: TextStyle(fontFamily: '/Cairo/Cairo-Bold.ttf', fontSize: 23, color: Colors.white),
                                                         ),
                                                       ),
                                                     ),
@@ -297,6 +299,8 @@ class _FutureQuestionCardState extends State<FutureQuestionCard> {
                                                   mainAxisSize: MainAxisSize.min,
                                                   children: [
                                                     Container(
+                                                      width: double.infinity,
+                                                     
                                                       decoration: const BoxDecoration(
                                                         color: Color(0xFF0D47A1),
                                                         borderRadius: BorderRadius.only(topRight: Radius.circular(20), topLeft: Radius.circular(20))
@@ -304,7 +308,7 @@ class _FutureQuestionCardState extends State<FutureQuestionCard> {
                                                       child: Padding(
                                                         padding: const EdgeInsets.fromLTRB(10, 5, 10, 3),
 
-                                                        child: Text(question.fields.question, style: TextStyle(fontFamily: '/Cairo/Cairo-Bold.ttf', fontSize: 23),
+                                                        child: Text(question.fields.question, style: TextStyle(fontFamily: '/Cairo/Cairo-Bold.ttf', fontSize: 23, color: Colors.white),
                                                         ),
                                                       ),
                                                     ),

@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:uhealths/models/healthstatus.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
+import 'package:uhealths/pages/insert_health_stats.dart';
 import 'package:uhealths/pages/login.dart';
 
 class UserStatus {
@@ -19,6 +20,8 @@ class HealthStatusPage extends StatefulWidget {
   _HealthStatusPageState createState() => _HealthStatusPageState();
 }
 
+// "https://pbp-midterm-project-b09-production.up.railway.app/uhealths/ajax"
+// "http://localhost:8000/uhealths/ajax"
 class _HealthStatusPageState extends State<HealthStatusPage> {
   Future<List<HealthStatus>> fetchHealthStatusPage(CookieRequest request) async {
     var data = await request.get(
@@ -38,9 +41,23 @@ class _HealthStatusPageState extends State<HealthStatusPage> {
   @override
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
+    if (request.loggedIn)
     return Scaffold(
         appBar: AppBar(
           title: const Text('Health Status'),
+          actions: <Widget>[
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (BuildContext context) => const InsertHealthstatsPage(),
+                ),
+              );
+            },
+            child: Text("Post New Healthstats"),
+          ),
+        ],
         ),
         drawer: DrawerClass(),
         body: FutureBuilder(
@@ -55,7 +72,7 @@ class _HealthStatusPageState extends State<HealthStatusPage> {
                       Text(
                         "Status is empty, sadge D:",
                         style:
-                            TextStyle(color: Color(0xff59A5D8), fontSize: 20),
+                            TextStyle(color: Color(0xFF0D47A1), fontSize: 20),
                       ),
                       SizedBox(height: 8),
                     ],
@@ -81,11 +98,6 @@ class _HealthStatusPageState extends State<HealthStatusPage> {
                                 TextButton(
                                   onPressed: () {
                                     UserStatus._getStatus = snapshot.data![index].fields;
-                                    // print(UserStatus.fetcher.toString());
-                                    // Navigator.push(
-                                    //   context,
-                                    //   MaterialPageRoute(builder: (context) => HealthStatusPageUserStatus()),
-                                    // );
                                     showDialog(
                                 context: context,
                                 builder: (context) {
@@ -99,9 +111,8 @@ class _HealthStatusPageState extends State<HealthStatusPage> {
                                         padding: const EdgeInsets.only(top: 20, bottom: 20),
                                         shrinkWrap: true,
                                         children: <Widget>[
-                                          Center(child: const Text('Status Details')),
+                                          Center(child: const Text('Health Status Details', style: TextStyle(fontWeight: FontWeight.bold))),
                                           SizedBox(height: 20),
-                                          // TODO: Munculkan informasi yang didapat dari form
                                           Text(
                                             "Umur : " + UserStatus.fetcher.age.toString(),
                                             textAlign: TextAlign.center,
@@ -144,7 +155,7 @@ class _HealthStatusPageState extends State<HealthStatusPage> {
                                   style: const TextStyle(
                                     fontSize: 24,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.blue,
+                                    color: Color(0xFF0D47A1)
                                   ),
                                   )
                                 ),
@@ -155,5 +166,38 @@ class _HealthStatusPageState extends State<HealthStatusPage> {
                 }
               }
             }));
+    else {
+      return Scaffold(
+        appBar: AppBar(
+          title: const Text('Health Status'),
+        ),
+        drawer: DrawerClass(),
+        body: Align(
+          alignment: Alignment.center, 
+          child: Column(
+          children: <Widget>[
+            const SizedBox(height: 240),
+            Text("Login To Proceed", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Color(0xFF0D47A1))),
+            const SizedBox(height: 10),
+            TextButton(
+              child: const Text(
+                "LOGIN",
+                style: TextStyle(color: Colors.white),
+              ),
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Color(0xFF0D47A1)),
+              ),
+              onPressed: () {
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute<void>(
+                    builder: (BuildContext context) => const LoginPage(),
+                  ),
+                );
+              }
+            )
+        ])    
+      ));
+    }
   }
 }
