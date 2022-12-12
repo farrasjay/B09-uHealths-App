@@ -196,7 +196,7 @@ class _Infografik1State extends State<Infografik1Page> {
                     onChanged: (String? value) {
                       setState(() {
                         if (value != "") {
-                        komen = value!;
+                        komen.text = value!;
                         }
                       });
                     },
@@ -204,7 +204,7 @@ class _Infografik1State extends State<Infografik1Page> {
                     onSaved: (String? value) {
                       setState(() {
                         if (value != "") {
-                        komen = value!;
+                        komen.text = value!;
                         }
                       });
                     },
@@ -222,7 +222,7 @@ class _Infografik1State extends State<Infografik1Page> {
                       ),
                       onPressed: () async{
                         if (_formKey.currentState!.validate() && komen != "") {
-                          addComment1(komen);
+                          addComment1(komen.text);
                         }
                         Navigator.pushReplacement(
                           context,
