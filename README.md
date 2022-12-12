@@ -4,6 +4,8 @@
 **Download** |
 [uHealths](https://install.appcenter.ms/orgs/pbp-b09/apps/uhealths/distribution_groups/b09-uhealths-flutter)
 
+# uHealths
+
 ## 👨‍💻 Anggota Kelompok PBP - B09👩‍💻
 1. Farras Hafizhudin Indra Wijaya - 2106652682
 2. Jihan Syafa Kamila - 2106751303
@@ -54,6 +56,12 @@ Berikut adalah penjelasan lebih rinci terkait alur pengintegrasian dengan web.
 - Membuat forum diskusi baru dan membalas forum pengguna lain
 - Mengakses Health Status dan update Health Status
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 📝 Pembagian Kerja
+Berikut adalah pembagian tugas kelompok kami.
+| Nama  | Modul yang Dikerjakan |
+|-------|-----------------------|
+| Farras Hafizhudin Indra Wijaya  | Login, Register, Health Status Tracker  |
+| Syarifah Nur Amalia  | Infografis  |
+| Rikza Kurnia Almujtaba Lubis  | FAQ  |
+| Jihan Syafa Kamila  | Forum  |
+| Yoozu Abiyyu Verisson  | Health Status Tracker  |
