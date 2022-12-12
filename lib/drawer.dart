@@ -155,23 +155,6 @@ class _DrawerClassState extends State<DrawerClass> {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.calculate),
-              title: const Text(
-                'BMI & BMR',
-                style: TextStyle(fontSize: 20),
-              ),
-              onTap: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute<void>(
-                    builder: (BuildContext context) => const MyHomePage(
-                      title: 'BMI & BMR',
-                    ),
-                  ),
-                );
-              },
-            ),
-            ListTile(
               leading: const Icon(Icons.forum),
               title: const Text(
                 'Forums',

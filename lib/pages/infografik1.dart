@@ -4,9 +4,11 @@ import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'dart:convert';
 import 'package:uhealths/main.dart';
 import 'package:uhealths/functions/fetch_infografik1.dart';
+import 'package:uhealths/pages/menu.dart';
 import 'infografik2.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
+import '../pages/infografik3.dart';
 
 class Infografik1Page extends StatefulWidget {
     const Infografik1Page({Key? key}) : super(key: key);
@@ -79,6 +81,21 @@ class _Infografik1State extends State<Infografik1Page> {
                   context,
                   MaterialPageRoute<void>(
                     builder: (BuildContext context) => Infografik2Page(),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.home),
+              title: const Text(
+                'Infografik 2',
+                style: TextStyle(fontSize: 20),
+              ),
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (BuildContext context) => Infografik3Page(),
                   ),
                 );
               },
@@ -225,6 +242,20 @@ class _Infografik1State extends State<Infografik1Page> {
                       }
                       return null;
                     },
+                    ),
+                    TextButton(
+                      style: TextButton.styleFrom(
+                        alignment: Alignment.center
+                      ),
+                      onPressed: () async{
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute<void>(
+                            builder: (BuildContext context) => UserMenuPage(),
+                          ),
+                        );
+                      },
+                      child: const Text("Back To Menu"),
                     ),
                     TextButton(
                       style: TextButton.styleFrom(

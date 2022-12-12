@@ -8,6 +8,8 @@ import 'infografik1.dart';
 import 'infografik2.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
+import 'package:uhealths/pages/menu.dart';
+import '../pages/infografik3.dart';
 
 class Infografik2Page extends StatefulWidget {
     const Infografik2Page({Key? key}) : super(key: key);
@@ -80,6 +82,21 @@ class _Infografik2State extends State<Infografik2Page> {
                   context,
                   MaterialPageRoute<void>(
                     builder: (BuildContext context) => Infografik2Page(),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.home),
+              title: const Text(
+                'Infografik 2',
+                style: TextStyle(fontSize: 20),
+              ),
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (BuildContext context) => Infografik3Page(),
                   ),
                 );
               },
@@ -226,6 +243,20 @@ class _Infografik2State extends State<Infografik2Page> {
                       }
                       return null;
                     },
+                    ),
+                    TextButton(
+                      style: TextButton.styleFrom(
+                        alignment: Alignment.center
+                      ),
+                      onPressed: () async{
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute<void>(
+                            builder: (BuildContext context) => UserMenuPage(),
+                          ),
+                        );
+                      },
+                      child: const Text("Back To Menu"),
                     ),
                     TextButton(
                       style: TextButton.styleFrom(
