@@ -1,349 +1,262 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:async';
-import 'dart:convert';
-import 'package:uhealths/models/healthstatus.dart';
+import 'package:uhealths/drawer.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
+import 'dart:convert';
+import 'package:uhealths/pages/healthstatus_page.dart';
 
-//TODO : UBAH DATA DI DJANGO KE JSON
-//BIKIN MODEL BERDASARKAN DATA JSON
-//POST DATA
-Future<void> createHealthStatus(CookieRequest request, int age, int height,
-    int weight, int calories_intake, String gender) async {
-  final data = {
-    'age': age,
-    'height': height,
-    'weight': weight,
-    'gender': gender,
-    'calories_intake': calories_intake,
-  };
-  final response = await request.post(
-      //endpoint ??
-      'https://pbp-midterm-project-b09-production.up.railway.app/uhealths/ajax-post/',
-      jsonEncode(data));
+class InsertHealthstatsPage extends StatefulWidget {
+    const InsertHealthstatsPage({super.key});
 
-  if (response.statusCode == 201) {
-    // If the server did return a 201 CREATED response,
-    // then parse the JSON.
-    print('success');
-    //return HealthStatus.fromJson(jsonDecode(response.body));
-  } else {
-    // If the server did not return a 201 CREATED response,
-    // then throw an exception.
-    throw Exception('Failed to create object.');
-  }
+    @override
+    State<InsertHealthstatsPage> createState() => _InsertHealthstatsPageState();
 }
 
-class HealthStatsForm extends StatefulWidget {
-  const HealthStatsForm({super.key});
-  @override
-  State<HealthStatsForm> createState() => _MyHealthStatsFormPage();
-}
-
-class _MyHealthStatsFormPage extends State<HealthStatsForm> {
+class _InsertHealthstatsPageState extends State<InsertHealthstatsPage> {
+  String age = "";
+  String gender = "";
+  String height = "";
+  String weight = "";
+  String calories_intake = "";
   final _formKey = GlobalKey<FormState>();
-  late int age = 0;
-  late int height = 0;
-  late int weight = 0;
-  late String gender = "";
-  late int calories_intake;
-  late double bmi;
-  late double bmr;
-  late String status;
-  List<String> listGender = ["Male", "Female"];
-  Future<void>? _futureHealthStatus;
-  //Future<HealthStatus>? _futureHealthStatus;
-  double calculate_bmi(int height, int weight) {
-    double denominator = (height / 100);
-    double bmi = weight / (denominator * denominator);
-    return bmi;
-  }
 
-  double calculate_bmr(String gender, int height, int weight, int age) {
-    double bmr = 0.0;
-    if (gender == 'Male') {
-      bmr = 66.5 + (13.7 * weight) + (5 * height) - (6.7 * age);
-    } else {
-      bmr = 655 + (9.6 * weight) + (1.8 * height) - (4.7 * age);
-    }
-    return bmr;
-  }
-
-  bool isNumber(String num) {
-    if (num == null) {
-      return false;
-    }
-    return double.tryParse(num) != null;
+  @override
+  void initState() {
+    super.initState();
   }
 
   @override
-  Widget build(BuildContext context) {
-    final request = context.watch<CookieRequest>();
-
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Update Health Status'),
-      ),
-      drawer: null,
-      body: Form(
-        key: _formKey,
-        child: SingleChildScrollView(
-          child: Container(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      hintText: "Age",
-                      labelText: "Age",
+    Widget build(BuildContext context) {
+      final request = context.watch<CookieRequest>();
+        return Scaffold(
+            appBar: AppBar(
+                title: Text('Form Healthstats'),
+            ),
+             // Menambahkan drawer menu
+            drawer: DrawerClass(),
+            body: Form(
+                key: _formKey,
+                child: SingleChildScrollView(
+                  child: Container(
+                    padding: const EdgeInsets.all(20.0),
+                    margin: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey),
+                    borderRadius: BorderRadius.circular(5),
                     ),
-                    onChanged: (String? value) {
-                      setState(() {
-                        //assign value to a variable
-                        age = isNumber(value!) ? int.parse(value) : 0;
-                      });
-                    },
-                    onSaved: (String? value) {
-                      setState(() {
-                        //assign value to a variable
-                        age = isNumber(value!) ? int.parse(value) : 0;
-                      });
-                    },
-                    validator: (String? value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Data cannot be empty!';
-                      } else {
-                        if (!(isNumber(value))) {
-                          return 'Data must be a number';
-                        }
-                        return null;
-                      }
-                    },
-                  ),
-                ),
-
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: SizedBox(
-                    width: 500,
                     child: Column(
-                      children: [
-                        DropdownButtonFormField(
-                          value: gender != "" ? gender : null,
-                          icon: const Icon(Icons.keyboard_arrow_down),
-                          items: listGender.map((String item) {
-                            return DropdownMenuItem(
-                              value: item,
-                              child: Text(item),
-                            );
-                          }).toList(),
-                          onChanged: (String? newValue) {
-                            setState(() {
-                              gender = newValue!;
-                            });
-                          },
-                          validator: (String? value) {
-                            if (value == null || value.isEmpty || value == "") {
-                              return '!';
-                            }
-                            return null;
-                          },
-                          hint: Container(
-                            //and here
-                            child: Text(
-                              "Gender",
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                              // Menggunakan padding sebesar 8 pixels
+                              padding: const EdgeInsets.all(8.0),
+                              child: TextFormField(
+                                  decoration: InputDecoration(
+                                      hintText: "Ex:20",
+                                      labelText: "Umur",
+                                      // Menambahkan icon agar lebih intuitif
+                                      icon: const Icon(Icons.people),
+                                      // Menambahkan circular border agar lebih rapi
+                                      border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(5.0),
+                                      ),
+                                  ),
+                                  // Menambahkan behavior saat nama diketik 
+                                  onChanged: (String? value) {
+                                      setState(() {
+                                          age = value!;
+                                      });
+                                  },
+                                  // Validator sebagai validasi form
+                                  validator: (String? value) {
+                                      if (value == null || value.isEmpty) {
+                                          return 'Umur tidak boleh kosong!';
+                                      }
+                                      return null;
+                                    },
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      hintText: "height",
-                      labelText: "height",
-                    ),
-                    onChanged: (String? value) {
-                      setState(() {
-                        //assign value to a variable
-                        height = isNumber(value!) ? int.parse(value) : 0;
-                      });
-                    },
-                    onSaved: (String? value) {
-                      setState(() {
-                        //assign value to a variable
-                        height = isNumber(value!) ? int.parse(value) : 0;
-                      });
-                    },
-                    validator: (String? value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Data cannot be empty!';
-                      } else {
-                        if (!(isNumber(value))) {
-                          return 'Data must be a number';
-                        }
-                        return null;
-                      }
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      hintText: "weight",
-                      labelText: "weight",
-                    ),
-                    onChanged: (String? value) {
-                      setState(() {
-                        //assign value to a variable
-                        weight = isNumber(value!) ? int.parse(value) : 0;
-                      });
-                    },
-                    onSaved: (String? value) {
-                      setState(() {
-                        //assign value to a variable
-                        weight = isNumber(value!) ? int.parse(value) : 0;
-                      });
-                    },
-                    validator: (String? value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Data cannot be empty!';
-                      } else {
-                        if (!(isNumber(value))) {
-                          return 'Data must be a number';
-                        }
-                        return null;
-                      }
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      hintText: "calories intake",
-                      labelText: "calories intake",
-                    ),
-                    onChanged: (String? value) {
-                      setState(() {
-                        //assign value to a variable
-                        calories_intake =
-                            isNumber(value!) ? int.parse(value) : 0;
-                      });
-                    },
-                    onSaved: (String? value) {
-                      setState(() {
-                        //assign value to a variable
-                        calories_intake =
-                            isNumber(value!) ? int.parse(value) : 0;
-                      });
-                    },
-                    validator: (String? value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Data cannot be empty!';
-                      } else {
-                        if (!(isNumber(value))) {
-                          return 'Data must be a number';
-                        }
-                        return null;
-                      }
-                    },
-                  ),
-                ),
-                Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      TextButton(
-                        child: const Text(
-                          "Update",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.blue),
-                        ),
-                        onPressed: () {
-                          if (_formKey.currentState!.validate()) {
-                            setState(() {
-                              final data = {
-                                'age': age,
+                          Padding(
+                              // Menggunakan padding sebesar 8 pixels
+                              padding: const EdgeInsets.all(8.0),
+                              child: TextFormField(
+                                  decoration: InputDecoration(
+                                      hintText: "Male/Female/etc",
+                                      labelText: "Jenis Kelamin",
+                                      // Menambahkan icon agar lebih intuitif
+                                      icon: const Icon(Icons.people),
+                                      // Menambahkan circular border agar lebih rapi
+                                      border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(5.0),
+                                      ),
+                                  ),
+                                  // Menambahkan behavior saat nama diketik 
+                                  onChanged: (String? value) {
+                                      setState(() {
+                                          gender = value!;
+                                      });
+                                  },
+                                  // Validator sebagai validasi form
+                                  validator: (String? value) {
+                                      if (value == null || value.isEmpty) {
+                                          return 'Jenis Kelamin tidak boleh kosong!';
+                                      }
+                                      return null;
+                                    },
+                            ),
+                          ),
+                          Padding(
+                              // Menggunakan padding sebesar 8 pixels
+                              padding: const EdgeInsets.all(8.0),
+                              child: TextFormField(
+                                  decoration: InputDecoration(
+                                      hintText: "in CM",
+                                      labelText: "Tinggi Badan",
+                                      // Menambahkan icon agar lebih intuitif
+                                      icon: const Icon(Icons.people),
+                                      // Menambahkan circular border agar lebih rapi
+                                      border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(5.0),
+                                      ),
+                                  ),
+                                  // Menambahkan behavior saat nama diketik 
+                                  onChanged: (String? value) {
+                                      setState(() {
+                                          height = value!;
+                                      });
+                                  },
+                                  // Validator sebagai validasi form
+                                  validator: (String? value) {
+                                      if (value == null || value.isEmpty) {
+                                          return 'Tinggi badan tidak boleh kosong!';
+                                      }
+                                      return null;
+                                    },
+                            ),
+                          ),
+                          Padding(
+                              // Menggunakan padding sebesar 8 pixels
+                              padding: const EdgeInsets.all(8.0),
+                              child: TextFormField(
+                                  decoration: InputDecoration(
+                                      hintText: "in Kg",
+                                      labelText: "Berat Badan",
+                                      // Menambahkan icon agar lebih intuitif
+                                      icon: const Icon(Icons.people),
+                                      // Menambahkan circular border agar lebih rapi
+                                      border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(5.0),
+                                      ),
+                                  ),
+                                  // Menambahkan behavior saat nama diketik 
+                                  onChanged: (String? value) {
+                                      setState(() {
+                                          weight = value!;
+                                      });
+                                  },
+                                  // Validator sebagai validasi form
+                                  validator: (String? value) {
+                                      if (value == null || value.isEmpty) {
+                                          return 'Berat badan tidak boleh kosong!';
+                                      }
+                                      return null;
+                                    },
+                            ),
+                          ),
+                          Padding(
+                              // Menggunakan padding sebesar 8 pixels
+                              padding: const EdgeInsets.all(8.0),
+                              child: TextFormField(
+                                  decoration: InputDecoration(
+                                      hintText: "Intake Calories ex:2000",
+                                      labelText: "Pemasokan Kalori",
+                                      // Menambahkan icon agar lebih intuitif
+                                      icon: const Icon(Icons.people),
+                                      // Menambahkan circular border agar lebih rapi
+                                      border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(5.0),
+                                      ),
+                                  ),
+                                  // Menambahkan behavior saat nama diketik 
+                                  onChanged: (String? value) {
+                                      setState(() {
+                                          calories_intake = value!;
+                                      });
+                                  },
+                                  // Validator sebagai validasi form
+                                  validator: (String? value) {
+                                      if (value == null || value.isEmpty) {
+                                          return 'Pemasokan kalori tidak boleh kosong!';
+                                      }
+                                      return null;
+                                    },
+                            ),
+                          ),
+                          TextButton(
+                          child: const Text(
+                            "Simpan",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(Colors.blue),
+                          ),
+                          // https://pbp-midterm-project-b09-production.up.railway.app/uhealths/insert-healthstats-flutter/
+                          // http://localhost:8000/uhealths/insert-healthstats-flutter/
+                          onPressed: () async {
+                            if (_formKey.currentState!.validate()) {
+                              final response = await request.post(
+                              "https://pbp-midterm-project-b09-production.up.railway.app/uhealths/insert-healthstats-flutter/",
+                              jsonEncode(<String, String>{
                                 'height': height,
                                 'weight': weight,
+                                'age': age,
                                 'gender': gender,
-                                'calories_intake': calories_intake,
-                              };
-
-                              _futureHealthStatus = createHealthStatus(request,
-                                  age, height, weight, calories_intake, gender);
-                              bmi = calculate_bmi(height, weight);
-                              bmr = calculate_bmr(gender, height, weight, age);
-                              if (bmi < 18.5) {
-                                status = 'Thinnes';
-                              } else if (bmi >= 18.5 && bmi < 25) {
-                                status = 'Normal';
-                              } else if (bmi >= 25 && bmi < 30) {
-                                status = 'Overweight';
-                              } else {
-                                status = 'Obese';
-                              }
-                            });
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return Dialog(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  elevation: 15,
-                                  child: Container(
+                                'calories_intake': calories_intake
+                              }));
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute<void>(
+                                  builder: (BuildContext context) => const HealthStatusPage(),
+                                ),
+                              );
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return Dialog(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    elevation: 15,
                                     child: ListView(
-                                      padding: const EdgeInsets.only(
-                                          top: 40, bottom: 40),
+                                      padding:
+                                          const EdgeInsets.only(top: 20, bottom: 20),
                                       shrinkWrap: true,
                                       children: <Widget>[
-                                        Center(
-                                            child: Text(
-                                          'The data has been updated! \n\n\n BMI: $bmi ($status) \n\n BMR: $bmr',
-                                          style: TextStyle(
-                                              fontSize: 25,
-                                              color: Color.fromARGB(
-                                                  255, 11, 42, 97)),
-                                        )),
-                                        SizedBox(height: 60),
+                                        const Center(child: Text('Informasi Data')),
+                                        const SizedBox(height: 20),
+                                        const Text(
+                                          'Data Sudah Ditambahkan',
+                                          textAlign: TextAlign.center,
+                                        ),
                                         TextButton(
                                           onPressed: () {
                                             Navigator.pop(context);
                                           },
-                                          child: Text('OK'),
+                                          child: const Text('Kembali'),
                                         ),
                                       ],
                                     ),
-                                  ),
-                                );
-                              },
-                            );
+                                  );
+                                },
+                              );
+                            }
                           }
-                        },
-                      ),
-                    ],
+                            ),
+                        ],
                   ),
-                )
-
-                //tambahkan field lainnya
-              ],
+                ),
+                ),
             ),
-          ),
-        ),
-      ),
-      //
-    );
-  }
+        );
+    }
 }

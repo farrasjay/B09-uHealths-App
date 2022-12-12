@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:uhealths/models/healthstatus.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
+import 'package:uhealths/pages/insert_health_stats.dart';
 import 'package:uhealths/pages/login.dart';
 
 class UserStatus {
@@ -43,6 +44,19 @@ class _HealthStatusPageState extends State<HealthStatusPage> {
     return Scaffold(
         appBar: AppBar(
           title: const Text('Health Status'),
+          actions: <Widget>[
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (BuildContext context) => const InsertHealthstatsPage(),
+                ),
+              );
+            },
+            child: Text("Post New Healthstats"),
+          ),
+        ],
         ),
         drawer: DrawerClass(),
         body: FutureBuilder(
