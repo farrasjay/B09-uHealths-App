@@ -4,6 +4,7 @@ import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:uhealthstugaskelompok/drawer.dart';
 import 'dart:convert';
 import 'package:uhealthstugaskelompok/main.dart';
+import 'package:uhealthstugaskelompok/page/infografik_home.dart';
 import '../functions/fetch_infografik1.dart';
 import 'infografik2.dart';
 import 'package:provider/provider.dart';
@@ -155,6 +156,24 @@ class _Infografik1State extends State<Infografik1Page> {
             ),
           ],
           ),
+          TextButton(
+                  style:
+                      TextButton.styleFrom(backgroundColor: Colors.blue),
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute<void>(
+                            builder: (BuildContext context) => InfografikHomePage(),
+                          ),
+                        );
+                  },
+                  child: Text(
+                    "Back",
+                    style: TextStyle(
+                      color: Color(0xffffffff),
+                    ),
+                  ),
+          ),
           Column(
             children: [
               Container(
@@ -162,7 +181,9 @@ class _Infografik1State extends State<Infografik1Page> {
                 child: Column(
                   children: [
                     Text(
-                      "COMMENTS"
+                      "COMMENTS",
+                      style: TextStyle(
+                      height: 2, fontSize: 24, fontWeight: FontWeight.bold)
                     ),
                     TextFormField(
                       decoration: InputDecoration(

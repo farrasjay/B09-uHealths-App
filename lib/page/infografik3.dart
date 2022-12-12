@@ -10,6 +10,8 @@ import 'infografik2.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 
+import 'infografik_home.dart';
+
 class Infografik3Page extends StatefulWidget {
     const Infografik3Page({Key? key}) : super(key: key);
 
@@ -187,6 +189,24 @@ class _Infografik3State extends State<Infografik3Page> {
             ),
           ],
           ),
+          TextButton(
+                  style:
+                      TextButton.styleFrom(backgroundColor: Colors.blue),
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute<void>(
+                            builder: (BuildContext context) => InfografikHomePage(),
+                          ),
+                        );
+                  },
+                  child: Text(
+                    "Back",
+                    style: TextStyle(
+                      color: Color(0xffffffff),
+                    ),
+                  ),
+          ),
           Column(
             children: [
               Container(
@@ -194,7 +214,9 @@ class _Infografik3State extends State<Infografik3Page> {
                 child: Column(
                   children: [
                     Text(
-                      "COMMENTS"
+                      "COMMENTS",
+                      style: TextStyle(
+                      height: 2, fontSize: 24, fontWeight: FontWeight.bold)
                     ),
                     TextFormField(
                       decoration: InputDecoration(
