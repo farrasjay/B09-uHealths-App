@@ -43,6 +43,7 @@ dependencies:
   vertical_card_pager: ^1.4.0
   flutter_svg_provider: ^1.0.3
   intro_slider: ^4.2.0
+  intl: ^0.17.0
 
 
 dev_dependencies:

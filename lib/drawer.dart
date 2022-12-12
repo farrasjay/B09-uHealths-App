@@ -4,10 +4,11 @@ import 'package:uhealths/pages/healthstatus_page.dart';
 import 'package:uhealths/pages/login.dart';
 import 'package:uhealths/pages/home.dart';
 import 'package:uhealths/pages/menu.dart';
-import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:uhealths/pages/discussionPage.dart';
+import 'package:uhealths/pages/infografik1.dart';
+import 'package:uhealths/pages/infografik_home.dart';
 import 'package:provider/provider.dart';
-import 'package:uhealths/pages/login.dart';
-
+import 'package:pbp_django_auth/pbp_django_auth.dart';
 
 class DrawerClass extends StatefulWidget {
   DrawerClass({Key? key}) : super(key: key);
@@ -132,9 +133,7 @@ class _DrawerClassState extends State<DrawerClass> {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute<void>(
-                    builder: (BuildContext context) => const MyHomePage(
-                      title: 'Infographics',
-                    ),
+                    builder: (BuildContext context) => const Infografik1Page(),
                   ),
                 );
               },
@@ -182,9 +181,7 @@ class _DrawerClassState extends State<DrawerClass> {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute<void>(
-                    builder: (BuildContext context) => const MyHomePage(
-                      title: 'Forums',
-                    ),
+                    builder: (BuildContext context) => const Forum(),
                   ),
                 );
               },

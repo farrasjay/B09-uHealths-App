@@ -4,10 +4,7 @@ import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
 import '../constant.dart';
 import '../drawer.dart';
-import '../page/login.dart';
-import 'infografik1.dart';
-import 'infografik2.dart';
-import 'infografik3.dart';
+import '../pages/login.dart';
 
 class InfografikHomePage extends StatelessWidget {
 
@@ -64,7 +61,7 @@ class InfografikHomePage extends StatelessWidget {
                     Container(
                       margin: EdgeInsets.symmetric(vertical: 20),
                       padding: EdgeInsets.all(10),
-                      height: 120,
+                      height: 90,
                       decoration: BoxDecoration(
                         color: Color(0xFF0D47A1),
                         borderRadius: BorderRadius.circular(13),
@@ -89,24 +86,10 @@ class InfografikHomePage extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Text(
-                                  "5 Tips Sederhana Memulai Hidup Sehat", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
+                                  "5 Tips Sederhana Memulai Hidup Sehat", style: TextStyle(color: Colors.white),
                                 ),
                                 Text("Jaman sekarang, orang-orang sudah mulai menyadari kembali betapa pentingnya memiliki pola hidup sehat. Nah, berikut adalah 5 cara sederhana agar kalian bisa memulai pola hidup sehat versi kalian. Yuk cari tahu lebih dalam!",
-                                style: TextStyle(color: Colors.white)),
-                                TextButton(
-                                  style: TextButton.styleFrom(
-                                  alignment: Alignment.center
-                                  ),
-                                  onPressed: () async{
-                                    Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute<void>(
-                                        builder: (BuildContext context) => Infografik1Page(),
-                                      ),
-                                    );
-                                  },
-                                  child: const Text("Click Here!"),
-                                  ),
+                                style: TextStyle(color: Colors.white))
                               ],
                             ),
                           ),
@@ -121,7 +104,7 @@ class InfografikHomePage extends StatelessWidget {
                     Container(
                       margin: EdgeInsets.symmetric(vertical: 20),
                       padding: EdgeInsets.all(10),
-                      height: 120,
+                      height: 90,
                       decoration: BoxDecoration(
                         color: Color(0xFF0D47A1),
                         borderRadius: BorderRadius.circular(13),
@@ -147,23 +130,9 @@ class InfografikHomePage extends StatelessWidget {
                               children: <Widget>[
                                 Text(
                                   "Menu Makanan 4 Sehat 5 Sempurna dan Manfaatnya Bagi Kesehatan",
-                                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
+                                  style: TextStyle(color: Colors.white),
                                 ),
-                                Text("Makanan-makanan yang sehat merupakan salah satu faktor untuk memiliki pola hidup yang sehat juga sehingga penting nih untuk mengetahui makanan 4 sehat 5 sempurna dan apa aja sih manfaatnya ? Check it out !!", style: TextStyle(color: Colors.white)),
-                                TextButton(
-                                  style: TextButton.styleFrom(
-                                    alignment: Alignment.center
-                                  ),
-                                  onPressed: () async{
-                                    Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute<void>(
-                                        builder: (BuildContext context) => Infografik2Page(),
-                                      ),
-                                    );
-                                  },
-                                  child: const Text("Click Here!"),
-                                  ),
+                                Text("Makanan-makanan yang sehat merupakan salah satu faktor untuk memiliki pola hidup yang sehat juga sehingga penting nih untuk mengetahui makanan 4 sehat 5 sempurna dan apa aja sih manfaatnya ? Check it out !!", style: TextStyle(color: Colors.white))
                               ],
                             ),
                           ),
@@ -178,7 +147,7 @@ class InfografikHomePage extends StatelessWidget {
                     Container(
                       margin: EdgeInsets.symmetric(vertical: 20),
                       padding: EdgeInsets.all(10),
-                      height: 120,
+                      height: 90,
                       decoration: BoxDecoration(
                         color: Color(0xFF0D47A1),
                         borderRadius: BorderRadius.circular(13),
@@ -203,24 +172,9 @@ class InfografikHomePage extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Text(
-                                  "7 Gerakan Workout untuk Pemula di Rumah, Mudah dan Praktis !", 
-                                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
+                                  "7 Gerakan Workout untuk Pemula di Rumah, Mudah dan Praktis !", style: TextStyle(color: Colors.white),
                                 ),
-                                Text("Workout harus di GYM? Kata siapa? Ini ada kok 7 gerakan workout yang dapat dilakukan di rumah, sangat praktis. Lets check it our guys !!", style: TextStyle(color: Colors.white)),
-                                TextButton(
-                                  style: TextButton.styleFrom(
-                                    alignment: Alignment.center
-                                  ),
-                                  onPressed: () async{
-                                    Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute<void>(
-                                        builder: (BuildContext context) => Infografik3Page(),
-                                      ),
-                                    );
-                                  },
-                                  child: const Text("Click Here!"),
-                                  ),
+                                Text("Workout harus di GYM? Kata siapa? Ini ada kok 7 gerakan workout yang dapat dilakukan di rumah, sangat praktis. Lets check it our guys !!", style: TextStyle(color: Colors.white))
                               ],
                             ),
                           ),
