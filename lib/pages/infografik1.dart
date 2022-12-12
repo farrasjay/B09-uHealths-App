@@ -196,7 +196,6 @@ class _Infografik1State extends State<Infografik1Page> {
                     onChanged: (String? value) {
                       setState(() {
                         if (value != "") {
-                        _komen.text = value!;
                         komen = value!;
                         }
                       });
@@ -205,7 +204,6 @@ class _Infografik1State extends State<Infografik1Page> {
                     onSaved: (String? value) {
                       setState(() {
                         if (value != "") {
-                        _komen.text = value!;
                         komen = value!;
                         }
                       });
@@ -224,8 +222,6 @@ class _Infografik1State extends State<Infografik1Page> {
                       ),
                       onPressed: () async{
                         if (_formKey.currentState!.validate() && komen != "") {
-                          print("Komen: " + komen.toString());
-                          addComment1(_komen.text);
                           addComment1(komen);
                         }
                         print("Tidak masuk fungsi");
