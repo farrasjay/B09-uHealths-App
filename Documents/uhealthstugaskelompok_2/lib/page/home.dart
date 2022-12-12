@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:pbp_django_auth/pbp_django_auth.dart';
-import '../drawer.dart';
-import '../page/login.dart';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
+import 'package:intro_slider/intro_slider.dart';
+import '../page/menu.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({key, required this.title});
@@ -16,67 +12,54 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  List<ContentConfig> listContentConfig = [];
+
+  @override
+  void initState() {
+    super.initState();
+
+    listContentConfig.add(
+      const ContentConfig(
+        title: "Welcome To uHealths",
+        description:
+            "We thrives in an online health and wellness website that offers insight into the most current health and wellness, as well as contents that helps our user to be able to live healthier lives.",
+        pathImage: "assets/images/slide1.png",
+        backgroundColor: Color.fromARGB(255, 20, 25, 50),
+      ),
+    );
+    listContentConfig.add(
+      const ContentConfig(
+        title: "User Centered Healthcare",
+        description:
+            "We're here to help you get your health on track with a new, fresh approach by providing you with infographics that will help you beat your goals and live a better life. We have a forum where you can interact with other health-enthusiasts. You can post questions, ask for advice, or just share what you're doing to improve your health.",
+        pathImage: "assets/images/slide2.png",
+        backgroundColor: Color.fromARGB(255, 10, 50, 75),
+      ),
+    );
+    listContentConfig.add(
+      const ContentConfig(
+        title: "Join Us Now",
+        description:
+            "We've got your back. Just enter your height, weight, age, and gender, and we'll calculate your BMI, which is a great indicator of whether you're at a healthy weight or not. Thus, you can find out your own health status!",
+        pathImage: "assets/images/slide3.png",
+        backgroundColor: Color.fromARGB(255, 0, 75, 100),
+      ),
+    );
+  }
+
+  void onDonePress() {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => UserMenuPage()),
+      );
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      drawer: DrawerClass(),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'Hi there, welcome to uHealths!',
-            ),
-            const SizedBox(height: 30),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(4),
-            child: Stack(
-              children: <Widget>[
-                Positioned.fill(
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: <Color>[
-                          Color(0xFF0D47A1),
-                          Color(0xFF1976D2),
-                          Color(0xFF42A5F5),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                TextButton(
-                  style: TextButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    padding: const EdgeInsets.all(12.0),
-                    textStyle: const TextStyle(fontSize: 20),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const LoginPage()),
-                    );
-                  },
-                  child: const Text(
-                  "Get Started",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                    ),
-                  )
-                ),
-              ],
-            ),
-            ),
-          ],
-        ),
-      ),
+    return IntroSlider(
+      key: UniqueKey(),
+      listContentConfig: listContentConfig,
+      onDonePress: onDonePress,
     );
   }
 }

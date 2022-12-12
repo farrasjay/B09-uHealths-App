@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import '../page/healthstatus_page.dart';
+import 'package:uhealthstugaskelompok/page/infografik1.dart';
+import 'package:uhealthstugaskelompok/page/infografik_home.dart';
+import '../page/login.dart';
 import '../page/home.dart';
 import '../page/menu.dart';
-
+import '../page/healthstatus_page.dart';
 class DrawerClass extends StatefulWidget {
   DrawerClass({Key? key}) : super(key: key);
 
@@ -18,14 +20,14 @@ class _DrawerClassState extends State<DrawerClass> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            const UserAccountsDrawerHeader(
+            UserAccountsDrawerHeader(
               currentAccountPicture: CircleAvatar(
                 backgroundImage: NetworkImage(
                     'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'),
               ),
-              accountEmail: Text('Anonymous@uhealths.co'),
+              accountEmail: Text(PassData.fetcher + '@uhealths.co'),
               accountName: Text(
-                'Anonymous',
+                PassData.fetcher,
                 style: TextStyle(fontSize: 20),
               ),
               decoration: BoxDecoration(
@@ -45,6 +47,21 @@ class _DrawerClassState extends State<DrawerClass> {
                     builder: (BuildContext context) => const MyHomePage(
                       title: 'Home',
                     ),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.password),
+              title: const Text(
+                'Login',
+                style: TextStyle(fontSize: 20),
+              ),
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (BuildContext context) => const LoginPage(),
                   ),
                 );
               },
@@ -79,9 +96,7 @@ class _DrawerClassState extends State<DrawerClass> {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute<void>(
-                    builder: (BuildContext context) => const MyHomePage(
-                      title: 'Infographics',
-                    ),
+                    builder: (BuildContext context) => Infografik1Page(),
                   ),
                 );
               },

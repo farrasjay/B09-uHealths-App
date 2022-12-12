@@ -132,7 +132,7 @@ class InfografikHomePage extends StatelessWidget {
                                   "Menu Makanan 4 Sehat 5 Sempurna dan Manfaatnya Bagi Kesehatan",
                                   style: TextStyle(color: Colors.white),
                                 ),
-                                Text("Makanan-makanan yang sehat merupakan salah satu faktor untuk memiliki pola hidup yang sehat juga sehingga ", style: TextStyle(color: Colors.white))
+                                Text("Makanan-makanan yang sehat merupakan salah satu faktor untuk memiliki pola hidup yang sehat juga sehingga penting nih untuk mengetahui makanan 4 sehat 5 sempurna dan apa aja sih manfaatnya ? Check it out !!", style: TextStyle(color: Colors.white))
                               ],
                             ),
                           ),
@@ -172,9 +172,9 @@ class InfografikHomePage extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Text(
-                                  "Discussions", style: TextStyle(color: Colors.white),
+                                  "7 Gerakan Workout untuk Pemula di Rumah, Mudah dan Praktis !", style: TextStyle(color: Colors.white),
                                 ),
-                                Text("Interact with other health-enthusiast!", style: TextStyle(color: Colors.white))
+                                Text("Workout harus di GYM? Kata siapa? Ini ada kok 7 gerakan workout yang dapat dilakukan di rumah, sangat praktis. Lets check it our guys !!", style: TextStyle(color: Colors.white))
                               ],
                             ),
                           ),
