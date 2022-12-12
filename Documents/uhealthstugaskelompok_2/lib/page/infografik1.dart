@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:uhealthstugaskelompok/drawer.dart';
 import 'dart:convert';
 import 'package:uhealthstugaskelompok/main.dart';
 import '../functions/fetch_infografik1.dart';
@@ -35,61 +36,7 @@ class _Infografik1State extends State<Infografik1Page> {
     appBar: AppBar(
         title: const Text('INFOGRAFIK 1'),
     ),
-    drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            const UserAccountsDrawerHeader(
-              currentAccountPicture: CircleAvatar(
-                backgroundImage: NetworkImage(
-                    'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'),
-              ),
-              accountEmail: Text('Anonymous@uhealths.co'),
-              accountName: Text(
-                'Anonymous',
-                style: TextStyle(fontSize: 20),
-              ),
-              decoration: BoxDecoration(
-                color: Color.fromARGB(255, 0, 15, 125),
-              ),
-            ),
-            ListTile(
-              leading: const Icon(Icons.home),
-              title: const Text(
-                'Infografik 1',
-                style: TextStyle(fontSize: 20),
-              ),
-              onTap: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute<void>(
-                    builder: (BuildContext context) => Infografik1Page(),
-                  ),
-                );
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.home),
-              title: const Text(
-                'Infografik 2',
-                style: TextStyle(fontSize: 20),
-              ),
-              onTap: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute<void>(
-                    builder: (BuildContext context) => Infografik2Page(),
-                  ),
-                );
-              },
-            ),
-            const Divider(
-              height: 10,
-              thickness: 2,
-            ),
-          ],
-        ),
-      ),
+    drawer: DrawerClass(),
     body: SingleChildScrollView(child: 
     Center(
         // Center is a layout widget. It takes a single child and positions it
