@@ -5,6 +5,7 @@ import 'package:uhealths/pages/home.dart';
 import 'package:uhealths/pages/menu.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
+import 'package:uhealths/pages/login.dart';
 
 class DrawerClass extends StatefulWidget {
   DrawerClass({Key? key}) : super(key: key);
@@ -78,6 +79,7 @@ class _DrawerClassState extends State<DrawerClass> {
                       builder: (context) =>
                           UserMenuPage(),
                 ));
+                PassData.username = "";
                 final response = await request.logout(
                     "https://pbp-midterm-project-b09-production.up.railway.app/logout-flutter/");
                 // "http://localhost:8000/logout-flutter/");

@@ -41,6 +41,7 @@ class _HealthStatusPageState extends State<HealthStatusPage> {
   @override
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
+    if (request.loggedIn)
     return Scaffold(
         appBar: AppBar(
           title: const Text('Health Status'),
@@ -165,5 +166,38 @@ class _HealthStatusPageState extends State<HealthStatusPage> {
                 }
               }
             }));
+    else {
+      return Scaffold(
+        appBar: AppBar(
+          title: const Text('Health Status'),
+        ),
+        drawer: DrawerClass(),
+        body: Align(
+          alignment: Alignment.center, 
+          child: Column(
+          children: <Widget>[
+            const SizedBox(height: 240),
+            Text("Login To Proceed", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Color(0xFF0D47A1))),
+            const SizedBox(height: 10),
+            TextButton(
+              child: const Text(
+                "LOGIN",
+                style: TextStyle(color: Colors.white),
+              ),
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Color(0xFF0D47A1)),
+              ),
+              onPressed: () {
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute<void>(
+                    builder: (BuildContext context) => const LoginPage(),
+                  ),
+                );
+              }
+            )
+        ])    
+      ));
+    }
   }
 }
