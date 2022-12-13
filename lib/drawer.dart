@@ -133,7 +133,7 @@ class _DrawerClassState extends State<DrawerClass> {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute<void>(
-                    builder: (BuildContext context) => const Infografik1Page(),
+                    builder: (BuildContext context) => const InfografikHomePage(),
                   ),
                 );
               },
